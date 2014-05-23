@@ -28,4 +28,4 @@ zstyle :compinstall filename '/home/evert/.zshrc'
 autoload -Uz compinit
 compinit
 
-fpath=(~/.vim/completions/completion_functions.zsh $fpath)
+fpath=(~/.zsh/distro/$DISTRO/completions/completion_functions.zsh $fpath)
