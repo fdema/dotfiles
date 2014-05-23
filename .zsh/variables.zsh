@@ -1,0 +1,5 @@
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+PATH=$PATH:$HOME/src/scripts
+EDITOR=vim
