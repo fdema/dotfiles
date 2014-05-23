@@ -6,6 +6,9 @@ nn <left> <Nop>
 nn <right> <Nop>
 nn <up> ddkP
 
+" Make Y behave like C or D
+map Y y$
+
 " general mapping
 nmap <C-Tab> :tabnext<CR>
 nmap <C-S-Tab> :tabprevious<CR>
@@ -22,18 +25,6 @@ nnoremap di, f,dT,
 nnoremap ci, f,cT,
 nnoremap da, f,ld2T, "delete argument 
 nnoremap ca, f,ld2T,i "delete arg and insert
-
-" delete surrounding characters
-nnoremap ds{ F{xf}x
-nnoremap cs{ F{xf}xi
-nnoremap ds" F"x,x
-nnoremap cs" F"x,xi
-nnoremap ds' F'x,x
-nnoremap cs' F'x,xi
-nnoremap ds( F(xf)x
-nnoremap cs( F(xf)xi
-nnoremap ds) F(xf)x
-nnoremap cs) F(xf)xi
 
 " upper or lowercase the current word
 nnoremap g^ gUiW
