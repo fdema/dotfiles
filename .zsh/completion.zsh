@@ -23,7 +23,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/evert/.zshrc'
 
 autoload -Uz compinit
 compinit
