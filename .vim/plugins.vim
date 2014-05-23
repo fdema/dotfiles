@@ -49,4 +49,4 @@ set t_Co=256
 let g:Powerline_symbols = 'fancy'
 
 " ============ gist-vim settings =============
-let g:gist_api_url = 'http://github.ugent.be/api/v3/'
+let g:gist_api_url = 'https://github.ugent.be/api/v3/'
