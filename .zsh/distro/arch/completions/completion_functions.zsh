@@ -1,3 +1,4 @@
+# requires aur-git package
 # compdef yaourt
 typeset -A opt_args
 

@@ -6,7 +6,7 @@ fi
 
 ## Yaourt aliases ## {{{
 # if necessary, replace 'yaourt' with your favorite AUR helper and adapt the
-# commands accordingly
+# commands accordingly, requires aur-git package
 
 # default action - install one or more packages
 alias pac="yaourt -S"			
