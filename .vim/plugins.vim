@@ -19,6 +19,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 " Colors
 Plugin 'tomasr/molokai'
@@ -45,3 +47,6 @@ filetype plugin indent on    " required
 set laststatus=2
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
+
+" ============ gist-vim settings =============
+let g:gist_api_url = 'http://github.ugent.be/api/v3'''
