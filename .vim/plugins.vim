@@ -13,18 +13,21 @@ Plugin 'gmarik/Vundle.vim'
 " Original plugins on GitHub
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 
-"Colors
+" Colors
 Plugin 'tomasr/molokai'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -35,4 +38,10 @@ filetype plugin indent on    " required
 " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
 "
 " see :h vundle for more details or wiki for FAQ
-"
+
+
+" ============ Powerline settings ============
+
+set laststatus=2
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
