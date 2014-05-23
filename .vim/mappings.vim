@@ -1,6 +1,9 @@
 "============== Custom Mappings ===============
 
-"Make up and down act as "move line" in normal mode
+" make space additional leader
+map <space> \
+
+" Make up and down act as "move line" in normal mode
 nn <down> ddp
 nn <left> <Nop>
 nn <right> <Nop>
