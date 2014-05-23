@@ -115,3 +115,6 @@ fi
 
 fortune | cowsay -f tux
 
+
+. ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
+
