@@ -8,15 +8,16 @@ if [ -d ~/.vim ]
 then
     echo "An existing .vim folder has been found, do you wish keep a backup(.vim.bak) of it? (y/n)"
     read -n 1 answer
+    while [ "$answer" != "y" -a "$answer" != "n" ]
+    do
+        echo "Please answer with y or n."
+        read -n 1 answer
+    done
     if [ "$answer" == "y" ]
     then
         mv ~/.vim ~/.vim.bak
-    elif [ "$answer" == "n" ]
-    then
-        rm -rf ~/.vim
     else
-        mv ~/.vim ~/.vim.bak
-        echo "Please answer with y or n next time."
+        rm -rf ~/.vim
     fi
 fi
 
@@ -24,15 +25,16 @@ if [ -d ~/.zsh ]
 then
     echo "An existing .zsh folder has been found, do you wish keep a backup(.zsh.bak) of it? (y/n)"
     read -n 1 answer
+    while [ "$answer" != "y" -a "$answer" != "n" ]
+    do
+        echo "Please answer with y or n."
+        read -n 1 answer
+    done
     if [ "$answer" == "y" ]
     then
         mv ~/.zsh ~/.zsh.bak
-    elif [ "$answer" == "n" ]
-    then
-        rm -rf ~/.zsh
     else
-        mv ~/.zsh ~/.zsh.bak
-        echo "Please answer with y or n next time."
+        rm -rf ~/.zsh
     fi
 fi
 
@@ -40,15 +42,16 @@ if [ -f ~/.Xresources ]
 then
     echo "An existing .Xresources file has been found, do you wish keep a backup(.Xresources.bak) of it? (y/n)"
     read -n 1 answer
+    while [ "$answer" != "y" -a "$answer" != "n" ]
+    do
+        echo "Please answer with y or n."
+        read -n 1 answer
+    done
     if [ "$answer" == "y" ]
     then
         mv ~/.Xresources ~/.Xresources.bak
-    elif [ "$answer" == "n" ]
-    then
-        rm -f ~/.Xresources
     else
-        mv ~/.Xresources ~/.Xresources.bak
-        echo "Please answer with y or n next time."
+        rm -f ~/.Xresources
     fi
 fi
 
@@ -56,26 +59,31 @@ if [ -d ~/.config/powerline ]
 then
     echo "An existing .config/powerline folder has been found, do you wish keep a backup(.config/powerline.bak) of it? (y/n)"
     read -n 1 answer
+    while [ "$answer" != "y" -a "$answer" != "n" ]
+    do
+        echo "Please answer with y or n."
+        read -n 1 answer
+    done
     if [ "$answer" == "y" ]
     then
         mv ~/.config/powerline ~/.config/powerline.bak
-    elif [ "$answer" == "n" ]
-    then
-        rm -rf ~/.config/powerline
     else
-        mv ~/.config/powerline ~/.config/powerline.bak
-        echo "Please answer with y or n next time."
+        rm -rf ~/.config/powerline
     fi
 fi
 
-if [ -f ~/.vimrc -a ! -h ~/.vimrc ]
+if [ -f ~/.vimrc ]
 then
-    mv ~/.vimrc  ~/.vimrc.local
-    echo "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
-else
-    rm ~/.vimrc
-    touch ~/.vimrc.local
+    if [ ! -h ~/.vimrc ]
+    then
+        mv ~/.vimrc  ~/.vimrc.local
+        echo "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
+    else
+        rm ~/.vimrc
+        touch ~/.vimrc.local
+    fi
 fi
+
 if [ -f ~/.zshrc ]
 then
     mv ~/.zshrc ~/.zshrc.local
