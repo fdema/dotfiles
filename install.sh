@@ -3,16 +3,27 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+echo "                                                                 "
+echo "   .:::::                .::      .::    .::                     "
+echo "   .::   .::             .::    .:    .: .::                     "
+echo "   .::    .::   .::    .:.: .:.:.: .:    .::   .::     .::::     "
+echo "   .::    .:: .::  .::   .::    .::  .:: .:: .:   .:: .::        "
+echo "   .::    .::.::    .::  .::    .::  .:: .::.::::: .::  .:::     "
+echo "   .::   .::  .::  .::   .::    .::  .:: .::.:            .::    "
+echo "   .:::::       .::       .::   .::  .::.:::  .::::   .:: .::    "
+echo "                                                                 "
 echo "================================================================="
 echo "||     Most welcome to the interactive dotfiles installer!     ||"
 echo "|| Thou shalt be guided to a better life in a better workflow! ||"
 echo "================================================================="
+echo "                                                                 "
 
 backup()
 {
     filename="$1"
     if [ -d ~/"$filename" ]
     then
+        echo ""
         echo "An existing "$filename" folder has been found, do you wish to keep a backup("$filename".bak) of it? (y/n)"
         read -s -n 1 answer
         while [ "$answer" != "y" -a "$answer" != "n" ]
@@ -28,6 +39,7 @@ backup()
         fi
     elif [ -f ~/"$filename" ]
     then
+        echo ""
         echo "An existing "$filename" file has been found, do you wish to keep a backup("$filename".bak) of it? (y/n)"
         read -s -n 1 answer
         while [ "$answer" != "y" -a "$answer" != "n" ]
@@ -75,7 +87,7 @@ do
 done
 if [ "$answer" == "y" ]
 then
-    echo "Installing zsh config files..."
+    echo -n "Installing zsh config files... "
     backup .zsh
     localrc .zshrc
     ln -s $DIR/.zshrc ~/.zshrc
@@ -94,7 +106,7 @@ do
 done
 if [ "$answer" == "y" ]
 then
-    echo "Installing bash config files..."
+    echo -n "Installing bash config files... "
     localrc .bashrc
     ln -s $DIR/.bashrc ~/.bashrc
     echo "Done!"
@@ -111,7 +123,7 @@ do
 done
 if [ "$answer" == "y" ]
 then
-    echo "Installing Xresources..."
+    echo -n "Installing Xresources..."
     backup .Xresources
     ln -s $DIR/.Xresources ~/.Xresources
     echo "Done!"
@@ -128,7 +140,7 @@ do
 done
 if [ "$answer" == "y" ]
 then
-    echo "Installing vim config files..."
+    echo -n "Installing vim config files... "
     backup .vim
     localrc .vimrc
     ln -s $DIR/.vimrc ~/.vimrc
@@ -138,13 +150,19 @@ then
     ln -s $DIR/.config/powerline ~/.config/powerline
     echo "Done!"
 
-    echo "Installing vim plugins..."
+    echo -n "Installing vim plugins."
 
     git clone https://github.com/gmarik/Vundle.vim.git $DIR/.vim/bundle/Vundle.vim >/dev/null 2>&1
+    
+    echo -n "."
 
     vim +PluginInstall +qall
 
-    echo "Installing powerline fonts..."
+    echo -n ". "
+
+    echo "Done!"
+
+    echo -n "Installing powerline fonts"
 
     if [ ! -d ~/.fonts ]
     then
@@ -154,8 +172,9 @@ then
     cd ~/.fonts 
 
     git clone git://github.com/Lokaltog/powerline-fonts.git >/dev/null 2>&1
+    echo -n "."
     wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf >/dev/null 2>&1
-
+    echo -n "."
     fc-cache -vf >/dev/null
 
     if [ ! -d ~/.config/fontconfig/conf.d ]
@@ -163,7 +182,7 @@ then
         mkdir -p ~/.config/fontconfig/conf.d
     fi
     wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf >/dev/null 2>&1
-
+    echo -n ". "
     mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d
 
     if [ ! -d ~/.fonts.conf.d ]
@@ -174,9 +193,11 @@ then
         ln -s ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
     fi
 
+    echo "Done!"
+
 else
     echo "Skipping vim config..."
 fi
 
-echo "Done! Thine terminal emulator might require a restart for the changes to take effect."
+echo "Installation Finnished! Thine terminal emulator might require a restart for the changes to take effect."
 
