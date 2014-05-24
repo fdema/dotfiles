@@ -32,6 +32,34 @@ then
     fi
 fi
 
+if [ -f ~/.Xresources ]
+then
+    echo -n "An existing .Xresources file has been found, do you wish keep a backup(.Xresources.bak) of it? (y/n)"
+    read answer
+    if [ $answer == "y" ]
+        mv ~/.Xresources ~/.Xresources.bak
+    elif [ $answer == "n" ]
+        rm -f ~/.Xresources
+    else
+        mv ~/.Xresources ~/.Xresources.bak
+        echo -n "Please answer with y or n next time."
+    fi
+fi
+
+if [ -d ~/.config/powerline ]
+then
+    echo -n "An existing .config/powerline folder has been found, do you wish keep a backup(.config/powerline.bak) of it? (y/n)"
+    read answer
+    if [ $answer == "y" ]
+        mv ~/.config/powerline ~/.config/powerline.bak
+    elif [ $answer == "n" ]
+        rm -rf ~/.config/powerline
+    else
+        mv ~/.config/powerline ~/.config/powerline.bak
+        echo -n "Please answer with y or n next time."
+    fi
+fi
+
 if [ -f ~/.vimrc ]
 then
     mv ~/.vimrc  ~/.vimrc.local
