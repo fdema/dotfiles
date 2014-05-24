@@ -4,9 +4,10 @@
 map <space> \
 
 " Make up and down act as "move line" in normal mode
+" Make left and right act as indentation tools
 nn <down> ddp
-nn <left> <Nop>
-nn <right> <Nop>
+nn <left> <<
+nn <right> >>
 nn <up> ddkP
 
 " Make Y behave like C or D
