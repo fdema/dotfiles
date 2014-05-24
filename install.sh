@@ -156,7 +156,7 @@ then
     echo -n "Installing vim plugins."
 
     git clone https://github.com/gmarik/Vundle.vim.git $DIR/.vim/bundle/Vundle.vim >/dev/null 2>&1
-    
+
     echo -n "."
 
     vim +PluginInstall +qall
@@ -175,8 +175,12 @@ then
     cd ~/.fonts 
 
     git clone git://github.com/Lokaltog/powerline-fonts.git >/dev/null 2>&1
+
     echo -n "."
-    wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf >/dev/null 2>&1
+    if [ ! -f ~/.fonts/PowerlineSymbols.otf ]
+    then
+        wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf >/dev/null 2>&1
+    fi
     echo -n "."
     fc-cache -vf >/dev/null
 
@@ -184,10 +188,12 @@ then
     then
         mkdir -p ~/.config/fontconfig/conf.d
     fi
-    wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf >/dev/null 2>&1
-    echo -n ". "
-    mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d
-
+    if [ ! -f ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ]
+    then
+        wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf >/dev/null 2>&1
+        echo -n ". "
+        mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d
+    fi
     if [ ! -d ~/.fonts.conf.d ]
     then
         ln -s ~/.config/fontconfig/conf.d ~/.fonts.conf.d
