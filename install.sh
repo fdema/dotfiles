@@ -3,7 +3,10 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "Most welcome to the interactive dotfiles installer! Thou shalt be guided to a better life in a better workflow!" | cowsay -f tux
+echo "================================================================="
+echo "||     Most welcome to the interactive dotfiles installer!     ||"
+echo "|| Thou shalt be guided to a better life in a better workflow! ||"
+echo "================================================================="
 
 backup()
 {
