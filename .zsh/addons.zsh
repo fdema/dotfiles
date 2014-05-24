@@ -1,3 +1,6 @@
 # load powerline in zsh
-source ~/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
+if [ -f ~/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh ]
+then
+    source ~/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
+fi
 
