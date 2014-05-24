@@ -3,14 +3,14 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+echo "Creating directories..."
 
-
-dirbackup()
+backup()
 {
-    dirname="$1"
-    if [ -d ~/"$dirname" ]
+    filename="$1"
+    if [ -d ~/"$filename" ]
     then
-        echo "An existing "$dirname" folder has been found, do you wish to keep a backup("$dirname".bak) of it? (y/n)"
+        echo "An existing "$filename" folder has been found, do you wish to keep a backup("$filename".bak) of it? (y/n)"
         read -s -n 1 answer
         while [ "$answer" != "y" -a "$answer" != "n" ]
         do
@@ -19,13 +19,13 @@ dirbackup()
         done
         if [ "$answer" == "y" ]
         then
-            mv ~/"$dirname" ~/"$dirname".bak
+            mv ~/"$filename" ~/"$filename".bak
         else
-            rm -rf ~/"$dirname"
+            rm -rf ~/"$filename"
         fi
-    elif [ -f ~/"$dirname" ]
+    elif [ -f ~/"$filename" ]
     then
-        echo "An existing "$dirname" file has been found, do you wish to keep a backup("$dirname".bak) of it? (y/n)"
+        echo "An existing "$filename" file has been found, do you wish to keep a backup("$filename".bak) of it? (y/n)"
         read -s -n 1 answer
         while [ "$answer" != "y" -a "$answer" != "n" ]
         do
@@ -34,17 +34,17 @@ dirbackup()
         done
         if [ "$answer" == "y" ]
         then
-            mv ~/"$dirname" ~/"$dirname".bak
+            mv ~/"$filename" ~/"$filename".bak
         else
-            rm -rf ~/"$dirname"
+            rm -rf ~/"$filename"
         fi
     fi
 } 
 
-dirbackup .vim
-dirbackup .zsh
-dirbackup .Xresources
-dirbackup .config/powerline
+backup .vim
+backup .zsh
+backup .Xresources
+backup .config/powerline
 
 localrc()
 {
@@ -53,8 +53,13 @@ localrc()
     then
         if [ ! -h ~/"$filename" ]
         then
-            mv ~/"$filename"  ~/"$filename".local
-            echo "Your previous "$filename" is now available under ~/"$filename".local and can still be used to overwrite settings."
+            if [ -f "$filename".local]
+            then
+                mv ~/"$filename" ~/"$filename".bak
+            else
+                mv ~/"$filename"  ~/"$filename".local
+                echo "Your previous "$filename" is now available under ~/"$filename".local and can still be used to overwrite settings."
+            fi
         else
             rm ~/"$filename"
             touch ~/"$filename".local
