@@ -4,21 +4,55 @@ echo "Creating symlinks..."
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+if [ -d ~/.vim ]
+then
+    echo -n "An existing .vim folder has been found, do you wish keep a backup(.vim.bak) of it? (y/n)"
+    read answer
+    if [ $answer == "y" ]
+        mv ~/.vim ~/.vim.bak
+    elif [ $answer == "n" ]
+        rm -rf ~/.vim
+    else
+        mv ~/.vim ~.vim.bak
+        echo -n "Please answer with y or n next time."
+    fi
+fi
+
+if [ -d ~/.zsh ]
+then
+    echo -n "An existing .zsh folder has been found, do you wish keep a backup(.zsh.bak) of it? (y/n)"
+    read answer
+    if [ $answer == "y" ]
+        mv ~/.zsh ~/.zsh.bak
+    elif [ $answer == "n" ]
+        rm -rf ~/.zsh
+    else
+        mv ~/.zsh ~/.zsh.bak
+        echo -n "Please answer with y or n next time."
+    fi
+fi
+
 if [ -f ~/.vimrc ]
 then
     mv ~/.vimrc  ~/.vimrc.local
-    echo "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
+    echo -n "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
+else
+    touch ~/.vimrc.local
 fi
 if [ -f ~/.zshrc ]
 then
     mv ~/.zshrc ~/.zshrc.local
-    echo "Your previous .zshrc is now available under ~/.zshrc.local and can still be used to overwrite settings."
+    echo -n "Your previous .zshrc is now available under ~/.zshrc.local and can still be used to overwrite settings."
+else
+    touch ~/.zshrc.local
 fi
 
 if [ -f ~/.bashrc ]
 then
     mv ~/.bashrc ~/.bashrc.local
-    echo "Your previous .bashrc is now available under ~/.bashrc.local and can still be used to overwrite settings."
+    echo -n "Your previous .bashrc is now available under ~/.bashrc.local and can still be used to overwrite settings."
+else
+    touch ~/.bashrc.local
 fi
 
 ln -s $DIR/.vimrc ~/.vimrc
@@ -29,13 +63,13 @@ ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.Xresources ~/.Xresources
 ln -s $DIR/.config/powerline ~/.config/powerline
 
-echo "Installing plugins..."
+echo -n "Installing plugins..."
 
 git clone https://github.com/gmarik/Vundle.vim.git $DIR/.vim/bundle/Vundle.vim >/dev/null 2>&1
 
 vim +PluginInstall +qall
 
-echo "Installing powerline fonts..."
+echo -n "Installing powerline fonts..."
 
 if [ ! -d ~/.fonts ]
 then
@@ -64,4 +98,4 @@ else
     ln -s ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
 fi
 
-echo "Done! Please restart your terminal emulator."
+echo -n "Done! Please restart your terminal emulator."
