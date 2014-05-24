@@ -2,7 +2,7 @@
 
 echo "Creating symlinks..."
 
-DIR=$(cd 'dirname $0' && pwd)
+DIR=$($(cd '$(dirname "$0")') && pwd)
 
 if [ -f ~/.vimrc]
     mv ~/.vimrc  ~/.vimrc.local
@@ -27,10 +27,12 @@ ln -s $DIR/.config/powerline ~/.config/powerline
 
 echo "Installing plugins..."
 
+git clone https://github.com/gmarik/Vundle.vim.git $DIR/.vim/bundle/Vundle.vim
+
 vim -c 'PluginInstall' \
     -c 'qa'
 
-echo "installing fonts..."
+echo "Installing powerline fonts..."
 
 if [ ! -d ~/.fonts]
     mkdir ~/.fonts
