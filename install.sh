@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 echo "Creating symlinks..."
 
@@ -7,7 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ -d ~/.vim ]
 then
     echo "An existing .vim folder has been found, do you wish keep a backup(.vim.bak) of it? (y/n)"
-    read answer
+    read -n 1 answer
     if [ "$answer" == "y" ]
     then
         mv ~/.vim ~/.vim.bak
@@ -15,7 +15,7 @@ then
     then
         rm -rf ~/.vim
     else
-        mv ~/.vim ~.vim.bak
+        mv ~/.vim ~/.vim.bak
         echo "Please answer with y or n next time."
     fi
 fi
@@ -23,7 +23,7 @@ fi
 if [ -d ~/.zsh ]
 then
     echo "An existing .zsh folder has been found, do you wish keep a backup(.zsh.bak) of it? (y/n)"
-    read answer
+    read -n 1 answer
     if [ "$answer" == "y" ]
     then
         mv ~/.zsh ~/.zsh.bak
@@ -39,7 +39,7 @@ fi
 if [ -f ~/.Xresources ]
 then
     echo "An existing .Xresources file has been found, do you wish keep a backup(.Xresources.bak) of it? (y/n)"
-    read answer
+    read -n 1 answer
     if [ "$answer" == "y" ]
     then
         mv ~/.Xresources ~/.Xresources.bak
@@ -55,7 +55,7 @@ fi
 if [ -d ~/.config/powerline ]
 then
     echo "An existing .config/powerline folder has been found, do you wish keep a backup(.config/powerline.bak) of it? (y/n)"
-    read answer
+    read -n 1 answer
     if [ "$answer" == "y" ]
     then
         mv ~/.config/powerline ~/.config/powerline.bak
