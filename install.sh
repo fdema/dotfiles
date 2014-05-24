@@ -6,72 +6,72 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [ -d ~/.vim ]
 then
-    echo -n "An existing .vim folder has been found, do you wish keep a backup(.vim.bak) of it? (y/n)"
+    echo "An existing .vim folder has been found, do you wish keep a backup(.vim.bak) of it? (y/n)"
     read answer
-    if [ $answer == "y" ]
+    if [ "$answer" == "y" ]
     then
         mv ~/.vim ~/.vim.bak
-    elif [ $answer == "n" ]
+    elif [ "$answer" == "n" ]
     then
         rm -rf ~/.vim
     else
         mv ~/.vim ~.vim.bak
-        echo -n "Please answer with y or n next time."
+        echo "Please answer with y or n next time."
     fi
 fi
 
 if [ -d ~/.zsh ]
 then
-    echo -n "An existing .zsh folder has been found, do you wish keep a backup(.zsh.bak) of it? (y/n)"
+    echo "An existing .zsh folder has been found, do you wish keep a backup(.zsh.bak) of it? (y/n)"
     read answer
-    if [ $answer == "y" ]
+    if [ "$answer" == "y" ]
     then
         mv ~/.zsh ~/.zsh.bak
-    elif [ $answer == "n" ]
+    elif [ "$answer" == "n" ]
     then
         rm -rf ~/.zsh
     else
         mv ~/.zsh ~/.zsh.bak
-        echo -n "Please answer with y or n next time."
+        echo "Please answer with y or n next time."
     fi
 fi
 
 if [ -f ~/.Xresources ]
 then
-    echo -n "An existing .Xresources file has been found, do you wish keep a backup(.Xresources.bak) of it? (y/n)"
+    echo "An existing .Xresources file has been found, do you wish keep a backup(.Xresources.bak) of it? (y/n)"
     read answer
-    if [ $answer == "y" ]
+    if [ "$answer" == "y" ]
     then
         mv ~/.Xresources ~/.Xresources.bak
-    elif [ $answer == "n" ]
+    elif [ "$answer" == "n" ]
     then
         rm -f ~/.Xresources
     else
         mv ~/.Xresources ~/.Xresources.bak
-        echo -n "Please answer with y or n next time."
+        echo "Please answer with y or n next time."
     fi
 fi
 
 if [ -d ~/.config/powerline ]
 then
-    echo -n "An existing .config/powerline folder has been found, do you wish keep a backup(.config/powerline.bak) of it? (y/n)"
+    echo "An existing .config/powerline folder has been found, do you wish keep a backup(.config/powerline.bak) of it? (y/n)"
     read answer
-    if [ $answer == "y" ]
+    if [ "$answer" == "y" ]
     then
         mv ~/.config/powerline ~/.config/powerline.bak
-    elif [ $answer == "n" ]
+    elif [ "$answer" == "n" ]
     then
         rm -rf ~/.config/powerline
     else
         mv ~/.config/powerline ~/.config/powerline.bak
-        echo -n "Please answer with y or n next time."
+        echo "Please answer with y or n next time."
     fi
 fi
 
 if [ -f ~/.vimrc -a ! -h ~/.vimrc ]
 then
     mv ~/.vimrc  ~/.vimrc.local
-    echo -n "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
+    echo "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
 else
     rm ~/.vimrc
     touch ~/.vimrc.local
@@ -79,7 +79,7 @@ fi
 if [ -f ~/.zshrc ]
 then
     mv ~/.zshrc ~/.zshrc.local
-    echo -n "Your previous .zshrc is now available under ~/.zshrc.local and can still be used to overwrite settings."
+    echo "Your previous .zshrc is now available under ~/.zshrc.local and can still be used to overwrite settings."
 else
     touch ~/.zshrc.local
 fi
@@ -87,7 +87,7 @@ fi
 if [ -f ~/.bashrc ]
 then
     mv ~/.bashrc ~/.bashrc.local
-    echo -n "Your previous .bashrc is now available under ~/.bashrc.local and can still be used to overwrite settings."
+    echo "Your previous .bashrc is now available under ~/.bashrc.local and can still be used to overwrite settings."
 else
     touch ~/.bashrc.local
 fi
@@ -100,13 +100,13 @@ ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.Xresources ~/.Xresources
 ln -s $DIR/.config/powerline ~/.config/powerline
 
-echo -n "Installing plugins..."
+echo "Installing plugins..."
 
 git clone https://github.com/gmarik/Vundle.vim.git $DIR/.vim/bundle/Vundle.vim >/dev/null 2>&1
 
 vim +PluginInstall +qall
 
-echo -n "Installing powerline fonts..."
+echo "Installing powerline fonts..."
 
 if [ ! -d ~/.fonts ]
 then
@@ -135,4 +135,4 @@ else
     ln -s ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
 fi
 
-echo -n "Done! Please restart your terminal emulator."
+echo "Done! Please restart your terminal emulator."
