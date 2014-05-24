@@ -11,11 +11,26 @@ dirbackup()
     if [ -d ~/"$dirname" ]
     then
         echo "An existing "$dirname" folder has been found, do you wish to keep a backup("$dirname".bak) of it? (y/n)"
-        read -ns 1 answer
+        read -s -n 1 answer
         while [ "$answer" != "y" -a "$answer" != "n" ]
         do
             echo "Please answer with y or n."
-            read -ns 1 answer
+            read -s -n 1 answer
+        done
+        if [ "$answer" == "y" ]
+        then
+            mv ~/"$dirname" ~/"$dirname".bak
+        else
+            rm -rf ~/"$dirname"
+        fi
+    elif [ -f ~/"$dirname" ]
+    then
+        echo "An existing "$dirname" file has been found, do you wish to keep a backup("$dirname".bak) of it? (y/n)"
+        read -s -n 1 answer
+        while [ "$answer" != "y" -a "$answer" != "n" ]
+        do
+            echo "Please answer with y or n."
+            read -s -n 1 answer
         done
         if [ "$answer" == "y" ]
         then
@@ -28,8 +43,8 @@ dirbackup()
 
 dirbackup .vim
 dirbackup .zsh
-dirbackup .Xrecources
-dirbackup .config
+dirbackup .Xresources
+dirbackup .config/powerline
 
 localrc()
 {
@@ -51,101 +66,6 @@ localrc .vimrc
 localrc .bashrc
 localrc .zshrc
 
-#if [ -d ~/.vim ]
-#then
-#    echo "An existing .vim folder has been found, do you wish to keep a backup(.vim.bak) of it? (y/n)"
-#    read -ns 1 answer
-#    while [ "$answer" != "y" -a "$answer" != "n" ]
-#    do
-#        echo "Please answer with y or n."
-#        read -ns 1 answer
-#    done
-#    if [ "$answer" == "y" ]
-#    then
-#        mv ~/.vim ~/.vim.bak
-#    else
-#        rm -rf ~/.vim
-#    fi
-#fi
-#
-#if [ -d ~/.zsh ]
-#then
-#    echo "An existing .zsh folder has been found, do you wish to keep a backup(.zsh.bak) of it? (y/n)"
-#    read -ns 1 answer
-#    while [ "$answer" != "y" -a "$answer" != "n" ]
-#    do
-#        echo "Please answer with y or n."
-#        read -ns 1 answer
-#    done
-#    if [ "$answer" == "y" ]
-#    then
-#        mv ~/.zsh ~/.zsh.bak
-#    else
-#        rm -rf ~/.zsh
-#    fi
-#fi
-#
-#if [ -f ~/.Xresources ]
-#then
-#    echo "An existing .Xresources file has been found, do you wish to keep a backup(.Xresources.bak) of it? (y/n)"
-#    read -ns 1 answer
-#    while [ "$answer" != "y" -a "$answer" != "n" ]
-#    do
-#        echo "Please answer with y or n."
-#        read -ns 1 answer
-#    done
-#    if [ "$answer" == "y" ]
-#    then
-#        mv ~/.Xresources ~/.Xresources.bak
-#    else
-#        rm -f ~/.Xresources
-#    fi
-#fi
-#
-#if [ -d ~/.config/powerline ]
-#then
-#    echo "An existing .config/powerline folder has been found, do you wish to keep a backup(.config/powerline.bak) of it? (y/n)"
-#    read -ns 1 answer
-#    while [ "$answer" != "y" -a "$answer" != "n" ]
-#    do
-#        echo "Please answer with y or n."
-#        read -ns 1 answer
-#    done
-#    if [ "$answer" == "y" ]
-#    then
-#        mv ~/.config/powerline ~/.config/powerline.bak
-#    else
-#        rm -rf ~/.config/powerline
-#    fi
-#fi
-
-#if [ -f ~/.vimrc ]
-#then
-#    if [ ! -h ~/.vimrc ]
-#    then
-#        mv ~/.vimrc  ~/.vimrc.local
-#        echo "Your previous .vimrc is now available under ~/.vimrc.local and can still be used to overwrite settings."
-#    else
-#        rm ~/.vimrc
-#        touch ~/.vimrc.local
-#    fi
-#fi
-#
-#if [ -f ~/.zshrc ]
-#then
-#    mv ~/.zshrc ~/.zshrc.local
-#    echo "Your previous .zshrc is now available under ~/.zshrc.local and can still be used to overwrite settings."
-#else
-#    touch ~/.zshrc.local
-#fi
-#
-#if [ -f ~/.bashrc ]
-#then
-#    mv ~/.bashrc ~/.bashrc.local
-#    echo "Your previous .bashrc is now available under ~/.bashrc.local and can still be used to overwrite settings."
-#else
-#    touch ~/.bashrc.local
-#fi
 
 echo "Creating symlinks..."
 
@@ -188,7 +108,8 @@ mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d
 if [ ! -d ~/.fonts.conf.d ]
 then
     ln -s ~/.config/fontconfig/conf.d ~/.fonts.conf.d
-else
+elif [ ! -f ~/.fonts.conf.d/10-powerline-symbols.conf ]
+then
     ln -s ~/.config/fontconfig/conf.d/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
 fi
 
