@@ -3,19 +3,22 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+red='\e[0;31m'
+NC='\e[0m'
+
 echo "                                                                 "
-echo "   .:::::                .::      .::    .::                     "
-echo "   .::   .::             .::    .:    .: .::                     "
-echo "   .::    .::   .::    .:.: .:.:.: .:    .::   .::     .::::     "
-echo "   .::    .:: .::  .::   .::    .::  .:: .:: .:   .:: .::        "
-echo "   .::    .::.::    .::  .::    .::  .:: .::.::::: .::  .:::     "
-echo "   .::   .::  .::  .::   .::    .::  .:: .::.:            .::    "
-echo "   .:::::       .::       .::   .::  .::.:::  .::::   .:: .::    "
-echo "                                                                 "
-echo "================================================================="
-echo "||     Most welcome to the interactive dotfiles installer!     ||"
-echo "|| Thou shalt be guided to a better life in a better workflow! ||"
-echo "================================================================="
+echo -e "${red}   .:::::                .::      .::    .::                     ${NC}"
+echo -e "${red}   .::   .::             .::    .:    .: .::                     ${NC}"
+echo -e "${red}   .::    .::   .::    .:.: .:.:.: .:    .::   .::     .::::     ${NC}"
+echo -e "${red}   .::    .:: .::  .::   .::    .::  .:: .:: .:   .:: .::        ${NC}"
+echo -e "${red}   .::    .::.::    .::  .::    .::  .:: .::.::::: .::  .:::     ${NC}"
+echo -e "${red}   .::   .::  .::  .::   .::    .::  .:: .::.:            .::    ${NC}"
+echo -e "${red}   .:::::       .::       .::   .::  .::.:::  .::::   .:: .::    ${NC}"
+echo -e "${red}                                                                 ${NC}"
+echo -e "${red}=================================================================${NC}"
+echo -e "${red}||     Most welcome to the interactive dotfiles installer!     ||${NC}"
+echo -e "${red}|| Thou shalt be guided to a better life in a better workflow! ||${NC}"
+echo -e "${red}=================================================================${NC}"
 echo "                                                                 "
 
 backup()

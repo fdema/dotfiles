@@ -50,13 +50,6 @@ noremap N Nzz
 noremap } }zz
 noremap { {zz
 
-"quick pairs
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-
 " Shortcut to quickly toggle 'set list'
 nmap <leader>l :set list!<CR>
 
