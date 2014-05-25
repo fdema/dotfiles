@@ -61,10 +61,14 @@ alias :x=' exit'
 alias cd..='cd ..'
 # }}}
 
-# Connections
-alias vpn='sudo vpnc-connect' 
-alias helios='ssh helios'
-
+# User specific aliases
+if [ -f ~/.zsh/user/$USER/aliases.zsh ]
+then
+    source ~/.zsh/user/$USER/aliases.zsh
+fi
 
 #Distro specific aliases
-source ~/.zsh/distro/$DISTRO/aliases.zsh
+if [ -f ~/.zsh/distro/$DISTRO/aliases.zsh ]
+then
+    source ~/.zsh/distro/$DISTRO/aliases.zsh
+fi
