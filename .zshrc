@@ -8,19 +8,19 @@ source ~/.zsh/options.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/addons.zsh
 
-# For distro-specific settings, variables, ...
+# For distro-specific settings, variables, aliases, ...
 if [ -f ~/.zsh/distro/$DISTRO/sources.zsh ]
 then
     source ~/.zsh/distro/$DISTRO/sources.zsh
 fi
 
-# For user-specific settings, variables, ...
+# For user-specific settings, variables, aliases, ...
 if [ -f ~/.zsh/user/$USER/sources.zsh ]
 then
     source ~/.zsh/user/$USER/sources.zsh
 fi
 
-# For machine-specific settings, variables, ...
+# For machine-specific settings, variables, aliases, ...
 if [ -f ~/.zshrc.local ]
 then
     source ~/.zshrc.local

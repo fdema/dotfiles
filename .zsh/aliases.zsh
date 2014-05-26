@@ -60,15 +60,3 @@ alias :Q=' exit'
 alias :x=' exit'
 alias cd..='cd ..'
 # }}}
-
-# User specific aliases
-if [ -f ~/.zsh/user/$USER/aliases.zsh ]
-then
-    source ~/.zsh/user/$USER/aliases.zsh
-fi
-
-#Distro specific aliases
-if [ -f ~/.zsh/distro/$DISTRO/aliases.zsh ]
-then
-    source ~/.zsh/distro/$DISTRO/aliases.zsh
-fi
