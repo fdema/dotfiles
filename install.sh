@@ -208,5 +208,5 @@ else
     echo "Skipping vim config..."
 fi
 
-echo "Installation Finnished! Thine terminal emulator might require a restart for the changes to take effect."
+echo "Installation Finished! Thine terminal emulator might require a restart for the changes to take effect."
 
