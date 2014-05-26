@@ -129,6 +129,7 @@ then
     echo -n "Installing Xresources..."
     backup .Xresources
     ln -s $DIR/.Xresources ~/.Xresources
+    xrdb .Xresources
     echo "Done!"
 else
     echo "Skipping Xresources..."
