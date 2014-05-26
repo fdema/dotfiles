@@ -22,6 +22,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'jcf/vim-latex'
 
 " Colors
 Plugin 'tomasr/molokai'
@@ -50,6 +51,7 @@ set t_Co=256
 let g:Powerline_symbols = 'fancy'
 
 " ============ gist-vim settings =============
+
 let g:gist_api_url = 'https://github.ugent.be/api/v3/'
 
 let g:gist_open_browser_after_post = 1
