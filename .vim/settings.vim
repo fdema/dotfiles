@@ -58,3 +58,7 @@ set grepprg=grep\ -nH\ $*
 "  The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+
+" stop vim from creating a .netrwhist file
+let g:netrw_dirhistmax=0
+
