@@ -60,3 +60,10 @@ alias :Q=' exit'
 alias :x=' exit'
 alias cd..='cd ..'
 # }}}
+
+# Vim accepts Ctrl+s as input
+alias vim="stty stop '' -ixoff ; vim"
+
+# 'Frozing' tty, so after any command terminal settings will be restored
+# Needed for CTRL+S in vim
+ttyctl -f

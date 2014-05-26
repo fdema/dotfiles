@@ -53,3 +53,6 @@ noremap { {zz
 " Shortcut to quickly toggle 'set list'
 nmap <leader>l :set list!<CR>
 
+" use ctrl+s to save
+inoremap <C-S> <C-O>:update<CR>
+nnoremap <C-S> :update<CR>
