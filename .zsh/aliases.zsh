@@ -49,6 +49,7 @@ alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
+alias clr='clear'
 alias cls=' echo -ne "\033c"'       # clear screen for real (it does not 
                                     # work in Terminology)
 # }}}
@@ -60,4 +61,14 @@ alias :x=' exit'
 alias cd..='cd ..'
 # }}}
 
-source ~/.zsh/distro/$DISTRO/aliases.zsh
+# User specific aliases
+if [ -f ~/.zsh/user/$USER/aliases.zsh ]
+then
+    source ~/.zsh/user/$USER/aliases.zsh
+fi
+
+#Distro specific aliases
+if [ -f ~/.zsh/distro/$DISTRO/aliases.zsh ]
+then
+    source ~/.zsh/distro/$DISTRO/aliases.zsh
+fi

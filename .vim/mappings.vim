@@ -1,9 +1,13 @@
 "============== Custom Mappings ===============
 
-"Make up and down act as "move line" in normal mode
+" make space additional leader
+map <space> \
+
+" Make up and down act as "move line" in normal mode
+" Make left and right act as indentation tools
 nn <down> ddp
-nn <left> <Nop>
-nn <right> <Nop>
+nn <left> <<
+nn <right> >>
 nn <up> ddkP
 
 " Make Y behave like C or D
@@ -45,13 +49,6 @@ noremap n nzz
 noremap N Nzz
 noremap } }zz
 noremap { {zz
-
-"quick pairs
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
 
 " Shortcut to quickly toggle 'set list'
 nmap <leader>l :set list!<CR>

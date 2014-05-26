@@ -16,11 +16,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
+Plugin 'Raimondi/delimitMate'
 
 " Colors
 Plugin 'tomasr/molokai'
