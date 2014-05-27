@@ -1,3 +1,5 @@
+alias dmesg='dmesg -HL'
+
 if [ $UID -ne 0 ]; then
     alias reboot='sudo systemctl reboot'
     alias poweroff='sudo systemctl poweroff'
