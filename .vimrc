@@ -5,4 +5,6 @@ source ~/.vim/mappings.vim
 source ~/.vim/settings.vim
 source ~/.vim/syntax.vim
 
+source ~/.vim/user/$USER/user.vim
+
 source ~/.vimrc.local
