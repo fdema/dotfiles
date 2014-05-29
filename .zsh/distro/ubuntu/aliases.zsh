@@ -10,3 +10,5 @@ alias aptdu='sudo apt-get update && sudo apt-get dist-upgrade'
 alias aptar='sudo apt-get autoremove'
 # Searh packages
 alias apts='sudo apt-cache search'
+# Delete package(s)
+alias aptr='sudo apt-get purge'
