@@ -10,10 +10,8 @@ nn <left> <<
 nn <right> >>
 nn <up> ddkP
 
-vn <down> ddp
-vn <left> <<
-vn <right> >>
-vn <up> ddkP
+vm <left> <
+vm <right> >
 
 " Make Y behave like C or D
 map Y y$
@@ -34,10 +32,6 @@ nnoremap di, f,dT,
 nnoremap ci, f,cT,
 nnoremap da, f,ld2T, "delete argument 
 nnoremap ca, f,ld2T,i "delete arg and insert
-
-" upper or lowercase the current word
-nnoremap g^ gUiW
-nnoremap gv guiW
 
 " diff
 noremap ]c ]czz
