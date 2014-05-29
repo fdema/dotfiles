@@ -33,6 +33,7 @@ set wrap "Wrap lines
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
+color molokai
 
 " ================= Other settings =================
 
