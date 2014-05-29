@@ -3,12 +3,17 @@
 " make space additional leader
 map <space> \
 
-" Make up and down act as "move line" in normal mode
+" Make up and down act as "move line" in normal mode and visual mode
 " Make left and right act as indentation tools
 nn <down> ddp
 nn <left> <<
 nn <right> >>
 nn <up> ddkP
+
+vn <down> ddp
+vn <left> <<
+vn <right> >>
+vn <up> ddkP
 
 " Make Y behave like C or D
 map Y y$
