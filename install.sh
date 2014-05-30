@@ -118,6 +118,22 @@ else
     echo "Skipping bash config..."
 fi
 
+echo "Dost thou desire to install git config files? (y/n)"
+read -s -n 1 answer
+while [ "$answer" != "y" -a "$answer" != "n" ]
+do
+    echo "Please answer with y or n."
+    read -s -n 1 answer
+done
+if [ "$answer" == "y" ]
+then
+    echo -n "Installing git config files... "
+    echo -e "[include]\n\tpath = $DIR/.gitconfig" >> ~/.gitconfig
+    echo "Done!"
+else
+    echo "Skipping git config..."
+fi
+
 echo "Dost thou desire to install Xresources? (y/n)"
 read -s -n 1 answer
 while [ "$answer" != "y" -a "$answer" != "n" ]
