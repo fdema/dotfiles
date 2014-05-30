@@ -25,7 +25,7 @@ Xft.hinting:                            true
 Xft.hintstyle:                          hintslight
 Xft.rgba:                               rgba
 
-URxvt*geometry:                         96x56
+URxvt*geometry:                         81x26
 URxvt*scrollBar:                        false
 URxvt*scrollTtyOutput:                  false
 URxvt*scrollTtyKeypress:                true
