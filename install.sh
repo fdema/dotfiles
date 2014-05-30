@@ -111,8 +111,10 @@ done
 if [ "$answer" == "y" ]
 then
     echo -n "Installing bash config files... "
+    backup .bash
     localrc .bashrc
     ln -s $DIR/.bashrc ~/.bashrc
+    ln -s $DIR/.bash ~/.bash
     echo "Done!"
 else
     echo "Skipping bash config..."
