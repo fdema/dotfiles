@@ -77,9 +77,8 @@ localrc()
             rm ~/"$filename"
             touch ~/"$filename".local
         fi
-    else
-        touch ~/"$filename".local
     fi
+    touch ~/"$filename".local
 }
 
 
