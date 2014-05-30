@@ -68,7 +68,7 @@ localrc()
         then
             if [ -f "$filename".local]
             then
-                mv ~/"$filename" ~/"$filename".bak
+                backup "$filename".local
             else
                 mv ~/"$filename"  ~/"$filename".local
                 echo "Your previous "$filename" is now available under ~/"$filename".local and can still be used to overwrite settings."
@@ -77,6 +77,8 @@ localrc()
             rm ~/"$filename"
             touch ~/"$filename".local
         fi
+    else
+        touch ~/"$filename".local
     fi
 }
 
