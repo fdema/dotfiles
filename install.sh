@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 red='\e[0;31m'
@@ -94,8 +93,8 @@ then
     echo -n "Installing zsh config files... "
     backup .zsh
     localrc .zshrc
-    ln -s $DIR/.zshrc ~/.zshrc
-    ln -s $DIR/.zsh ~/.zsh
+    ln -s $DIR/zshrc ~/.zshrc
+    ln -s $DIR/zsh ~/.zsh
     echo "Done!"
 else
     echo "Skipping zsh config..."
@@ -113,8 +112,8 @@ then
     echo -n "Installing bash config files... "
     backup .bash
     localrc .bashrc
-    ln -s $DIR/.bashrc ~/.bashrc
-    ln -s $DIR/.bash ~/.bash
+    ln -s $DIR/bashrc ~/.bashrc
+    ln -s $DIR/bash ~/.bash
     echo "Done!"
 else
     echo "Skipping bash config..."
@@ -130,7 +129,7 @@ done
 if [ "$answer" == "y" ]
 then
     echo -n "Installing git config files... "
-    echo -e "[include]\n\tpath = $DIR/.gitconfig" >> ~/.gitconfig
+    echo -e "[include]\n\tpath = $DIR/gitconfig" >> ~/.gitconfig
     echo "Done!"
 else
     echo "Skipping git config..."
@@ -147,8 +146,8 @@ if [ "$answer" == "y" ]
 then
     echo -n "Installing Xresources..."
     backup .Xresources
-    ln -s $DIR/.Xresources ~/.Xresources
-    xrdb .Xresources
+    ln -s $DIR/Xresources ~/.Xresources
+    xrdb Xresources
     echo "Done!"
 else
     echo "Skipping Xresources..."
@@ -166,18 +165,18 @@ then
     echo -n "Installing vim config files... "
     backup .vim
     localrc .vimrc
-    ln -s $DIR/.vimrc ~/.vimrc
-    ln -s $DIR/.vim ~/.vim
+    ln -s $DIR/vimrc ~/.vimrc
+    ln -s $DIR/vim ~/.vim
 
     mkdir -p ~/.config/
 
     backup .config/powerline
-    ln -s $DIR/.config/powerline ~/.config/powerline
+    ln -s $DIR/config/powerline ~/.config/powerline
     echo "Done!"
 
     echo -n "Installing vim plugins."
 
-    git clone https://github.com/gmarik/Vundle.vim.git $DIR/.vim/bundle/Vundle.vim >/dev/null 2>&1
+    git clone https://github.com/gmarik/Vundle.vim.git $DIR/vim/bundle/Vundle.vim >/dev/null 2>&1
 
     echo -n "."
 
