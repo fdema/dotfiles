@@ -65,7 +65,7 @@ localrc()
     then
         if [ ! -h ~/"$filename" ]
         then
-            if [ -f "$filename".local]
+            if [ -f "$filename".local ]
             then
                 backup "$filename".local
             else
