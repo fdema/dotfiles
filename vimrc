@@ -11,6 +11,8 @@ endif
 
 source ~/.vimrc.local
 
-if filereadable("./.vimrc.project")
-  source ./.vimrc.project
+let projectfile = findfile('.vimrc.project', '.;')
+
+if !(projectfile == '' || !filereadable(projectfile))
+  exec 'source' .  projectfile
 endif
