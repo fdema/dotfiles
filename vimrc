@@ -14,5 +14,5 @@ source ~/.vimrc.local
 let projectfile = findfile('.vimrc.project', '.;')
 
 if !(projectfile == '' || !filereadable(projectfile))
-  exec 'source' .  projectfile
+  exec 'source ' .  projectfile
 endif
