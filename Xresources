@@ -41,6 +41,25 @@ URxvt*color13: S_violet
 URxvt*color14: S_base1
 URxvt*color15: S_base3
 
+xscreensaver.Dialog.foreground:         S_base0
+xscreensaver.Dialog.background:         S_base03
+xscreensaver.Dialog.topShadowColor:     S_base03
+xscreensaver.Dialog.bottomShadowColor:  S_base03
+xscreensaver.Dialog.Button.foreground:  S_base02
+xscreensaver.Dialog.Button.background:  S_base0
+
+xscreensaver.Dialog.text.foreground:    S_base02
+xscreensaver.Dialog.text.background:    S_base0
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
+
+xscreensaver.passwd.thermometer.foreground:  S_red
+xscreensaver.passwd.thermometer.background:  S_base03
+xscreensaver.passwd.thermometer.width:       8
+
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
+
 Xft.antialias:                          true
 Xft.autohint:                           false
 Xft.hinting:                            true
