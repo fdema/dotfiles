@@ -27,6 +27,7 @@ Plugin 'jcf/vim-latex'
 
 " Colors
 Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 
 
 " All of your Plugins must be added before the following line
