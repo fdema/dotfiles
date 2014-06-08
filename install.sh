@@ -56,7 +56,7 @@ backup()
             rm -rf ~/"$filename"
         fi
     fi
-} 
+}
 
 localrc()
 {
@@ -129,7 +129,9 @@ done
 if [ "$answer" == "y" ]
 then
     echo -n "Installing git config files... "
-    echo -e "[include]\n\tpath = $DIR/gitconfig" >> ~/.gitconfig
+    echo -e "[include]\n\tpath = $DIR/gitconfig" > ~/.gitconfig.tmp
+    [ -f "~/.gitconfig" ] && cat ~/.gitconfig >> ~/.gitconfig.tmp
+    mv ~/.gitconfig.tmp ~/.gitconfig
     echo "Done!"
 else
     echo "Skipping git config..."
