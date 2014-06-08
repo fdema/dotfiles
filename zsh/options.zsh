@@ -11,7 +11,7 @@ case $TERM in
     # Write some info to terminal title.
     # This is seen when the shell prompts for input.
     function precmd {
-      print -Pn "\e]0;$TERM - $PWD\a"
+      print -Pn "\e]0;$USER@$HOST - $PWD\a"
     }
     # Write command and args to terminal title.
     # This is seen while the shell waits for a command to complete.
