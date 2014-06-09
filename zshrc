@@ -1,18 +1,3 @@
-# Source the file(s) if it exists
-function loadfile() {
-    if [ $# -lt 1 ]
-    then
-        return;
-    fi
-    for file in $@
-    do
-        if [ -f "$file" ]
-        then
-            source $file
-        fi
-    done
-}
-
 # Find out distro
 DISTRO=$(cat /etc/*-release | grep "^ID=" | sed "s/^ID=//")
 
@@ -24,10 +9,18 @@ source ~/.zsh/aliases.zsh
 source ~/.zsh/addons.zsh
 
 # For distro-specific settings, variables, aliases, ...
-loadfile ~/.zsh/distro/$DISTRO/sources.zsh
+if [ -f ~/.zsh/distro/$DISTRO/sources.zsh ]; then
+    source ~/.zsh/distro/$DISTRO/sources.zsh
+fi
 
 # For user-specific settings, variables, aliases, ...
-loadfile ~/.zsh/user/$USER/sources.zsh
+if [ -f ~/.zsh/user/$USER/sources.zsh ]
+then
+    source ~/.zsh/user/$USER/sources.zsh
+fi
 
 # For machine-specific settings, variables, aliases, ...
-loadfile ~/.zshrc.local
+if [ -f ~/.zshrc.local ]
+then
+    source ~/.zshrc.local
+fi

@@ -5,7 +5,7 @@ source ~/.vim/mappings.vim
 source ~/.vim/settings.vim
 source ~/.vim/syntax.vim
 
-if filereadable("~/.vim/user/$USER/user.vim")
+if filereadable($HOME . "/.vim/user/". $USER . "/user.vim")
   source ~/.vim/user/$USER/user.vim
 endif
 
