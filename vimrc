@@ -9,7 +9,9 @@ if filereadable($HOME . "/.vim/user/". $USER . "/user.vim")
   source ~/.vim/user/$USER/user.vim
 endif
 
-source ~/.vimrc.local
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
 
 let projectfile = findfile('.vimrc.project', '.;')
 
