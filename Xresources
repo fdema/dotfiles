@@ -55,10 +55,10 @@ URxvt*scrollTtyKeypress:                true
 URxvt*scrollWithBuffer:                 true
 URxvt*cursorBlink:                      true
 URxvt*iconFile:                         /usr/share/icons/Numix-Circle/48x48/apps/terminal.svg
-URxvt*font:                             xft:Liberation\ Mono\ for\ Powerline:size=11:antialias=true:hinting:true
-URxvt*boldFont:                         xft:Liberation\ Mono\ for\ Powerline:bold:size=11:antialias=true:hinting:true
-URxvt*italicFont:                       xft:Liberation\ Mono\ for\ Powerline:italic:size=11:antialias=true:hinting:true
-URxvt*boldItalicFont:                   xft:Liberation\ Mono\ for\ Powerline:bold:italic:size=11:antialias=true:hinting:true
+URxvt*font:                             xft:Liberation\ Mono\ for\ Powerline:size=10:antialias=true:hinting:true
+URxvt*boldFont:                         xft:Liberation\ Mono\ for\ Powerline:bold:size=10:antialias=true:hinting:true
+URxvt*italicFont:                       xft:Liberation\ Mono\ for\ Powerline:italic:size=10:antialias=true:hinting:true
+URxvt*boldItalicFont:                   xft:Liberation\ Mono\ for\ Powerline:bold:italic:size=10:antialias=true:hinting:true
 URxvt*perl-ext-common:                  default,matcher,tabbed,fullscreen,vtwheel,clipboard
 URxvt*iso14755:                         false
 URxvt*iso14755_52:                      false
