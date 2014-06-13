@@ -2,3 +2,5 @@ let g:powerline_config_overrides = { "ext": { "vim" :  { "colorscheme": "solariz
 
 silent! colorscheme solarized
 set background=dark
+
+tw=80
