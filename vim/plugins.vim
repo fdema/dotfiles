@@ -24,6 +24,8 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'jcf/vim-latex'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
 
 " Colors
 Plugin 'tomasr/molokai'
