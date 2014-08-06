@@ -8,6 +8,9 @@ prompt_setup() {
     setopt noxtrace localoptions prompt_subst
 
     local user
+    local host
+    local gitcolor
+    local gitstring
     local userstring
     local usercolor
     local ref
@@ -26,7 +29,13 @@ prompt_setup() {
         usercolor="green"
     fi 
 
-    userstring="%{$bg[$usercolor]$fg[white]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[grey]%}%{$reset_color%}"
+    if [ -n "$SSH_CLIENT" ]; then
+        host="%{$bg[grey]$fg[white]%}  %m %{$bg[$usercolor]$fg[grey]%}"
+    else
+        host=""
+    fi
+
+    userstring="$host%{$bg[$usercolor]$fg[white]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[grey]%}%{$reset_color%}"
 
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         if $(git status | grep "working directory clean" >/dev/null 2>&1); then
