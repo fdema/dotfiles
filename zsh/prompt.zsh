@@ -31,7 +31,7 @@ prompt_setup() {
             if [ "$previous" = "none"  ]; then
                 errorcode="%{$reset_color$fg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
             elif [ "$previous" != "0" ]; then
-                errorcode="$errorcode%{$fg[red]$bg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
+                errorcode="$errorcode%{$fg[white]$bg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
             else
                 errorcode="$errorcode%{$fg[red]$bg[green]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
             fi
@@ -41,7 +41,7 @@ prompt_setup() {
             elif [ "$previous" != "0" ]; then
                 errorcode="$errorcode%{$fg[green]$bg[red]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
             else
-                errorcode="$errorcode%{$fg[green]$bg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
+                errorcode="$errorcode%{$fg[white]$bg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
             fi
         fi
         previous=$RETVAL
@@ -54,7 +54,7 @@ prompt_setup() {
         | sed "s/\([^/]*\)$/%{%B%}\1%{%b%}/" \
         | sed "s/.*\(\/[^/]*\/[^/]*\/[^/]*\)/⋯\1/" \
         | sed "s/^/%{$bg[grey]$fg[white]%} /" \
-        | sed "s/\// %{$fg[grey]%}%{$fg[white]%} /g" \
+        | sed "s/\// %{$fg[white]%}%{$fg[white]%} /g" \
         | sed "s/$/%{$bg[grey]%} %{$reset_color$fg[grey]%}%{$reset_color%}/"`
 
     PROMPT="$userstring$dir "
