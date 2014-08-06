@@ -1,4 +1,4 @@
-autoload -U colors && colors add-zsh-hook
+autoload -U colors add-zsh-hook && colors
 
 
 prompt_setup() {
