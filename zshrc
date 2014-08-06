@@ -6,7 +6,7 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/variables.zsh
 source ~/.zsh/options.zsh
 source ~/.zsh/aliases.zsh
-source ~/.zsh/addons.zsh
+source ~/.zsh/prompt.zsh
 
 # For distro-specific settings, variables, aliases, ...
 if [ -f ~/.zsh/distro/$DISTRO/sources.zsh ]; then
