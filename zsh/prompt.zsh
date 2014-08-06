@@ -29,7 +29,15 @@ prompt_setup() {
     userstring="%{$bg[$usercolor]$fg[white]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[grey]%}%{$reset_color%}"
 
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        git="%{$fg[grey]%}%{$bg[grey]$fg[white]%B%}  $(git branch | grep "^*" | sed "s/^* //") %{%b$reset_color%}"
+        if $(git status | grep "working directory clean"); then
+            gitcolor="grey"
+            gitsymbol=""
+        else
+            gitcolor="yellow"
+            gitsymbol="±"
+        fi
+
+        git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[white]%B%} $gitsymbol $(git branch | grep "^*" | sed "s/^* //") %{%b$reset_color%}"
     fi
 
     for RETVAL in $(echo $RETVALS | sed "s/ /\n/g"); do
@@ -37,7 +45,7 @@ prompt_setup() {
             printerrorcodes="true"
             if [ "$previous" = "none"  ]; then
                 if [ -n "$git" ]; then
-                    errorcode="%{$reset_color$bg[grey]$fg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
+                    errorcode="%{$reset_color$bg[$gitcolor]$fg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
                 else
                     errorcode="%{$reset_color$fg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
                 fi
@@ -49,7 +57,7 @@ prompt_setup() {
         else
             if [ "$previous" = "none"  ]; then
                 if [ -n "$git" ]; then
-                    errorcode="%{$reset_color$bg[grey]$fg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
+                    errorcode="%{$reset_color$bg[$gitcolor]$fg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
                 else
                     errorcode="%{$reset_color$fg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
                 fi
