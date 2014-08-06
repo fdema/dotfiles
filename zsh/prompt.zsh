@@ -29,7 +29,7 @@ prompt_setup() {
     userstring="%{$bg[$usercolor]$fg[white]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[grey]%}%{$reset_color%}"
 
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        if $(git status | grep "working directory clean"); then
+        if $(git status | grep "working directory clean" >/dev/null 2>&1); then
             gitcolor="grey"
             gitsymbol=""
         else
