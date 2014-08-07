@@ -44,6 +44,6 @@ alias pacimpl="yaourt -D --asdep"
 alias pacro="yaourt -Qtdq > /dev/null && yaourt -Rns \$(yaourt -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
 
 # update all *-git packages
-alias pacugit="yaourt --noconfirm -S $(yaourt -Q | grep '\-git' | sed 's/.*\/\([^ ]* \).*/\1/' | tr -d '\n')"
+alias pacugit="yaourt --noconfirm -S $(yaourt -Q | grep '\-git' | sort -R | sed 's/.*\/\([^ ]* \).*/\1/' | tr -d '\n')"
 
 # }}}
