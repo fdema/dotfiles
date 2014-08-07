@@ -3,7 +3,7 @@
 typeset -A opt_args
 
 _localaur () { compadd $(ls /var/aur/) ; }
-_yaourt() {    
+_yaourt() {
     '_localaur'
 }
 

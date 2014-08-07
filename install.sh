@@ -177,7 +177,7 @@ then
     echo "Done!"
 
     echo -n "Installing vim plugins."
-    
+
     mkdir -p $DIR/vim/bundle >/dev/null 2>&1
     git clone https://github.com/gmarik/Vundle.vim.git $DIR/vim/bundle/Vundle.vim >/dev/null 2>&1
 
@@ -196,7 +196,7 @@ then
         mkdir ~/.fonts
     fi
 
-    cd ~/.fonts 
+    cd ~/.fonts
 
     git clone git://github.com/Lokaltog/powerline-fonts.git >/dev/null 2>&1
 

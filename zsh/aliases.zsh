@@ -49,7 +49,7 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias clr='clear'
-alias cls=' echo -ne "\033c"'       # clear screen for real (it does not 
+alias cls=' echo -ne "\033c"'       # clear screen for real (it does not
                                     # work in Terminology)
 # }}}
 

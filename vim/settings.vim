@@ -16,17 +16,17 @@ set showmatch " show matching brackets under cursor
 
 
 " ========== Text, tab and indent related ==========
- 
+
 " 1 tab = 4 spaces
 set expandtab
 set shiftwidth=4 " sets indentationcommands (< and > in normal mode)
 set tabstop=4 " sets width of tab (insert mode)
 set softtabstop=4 " sets amount of whitespace to be deleted with backspace
-   
+
 " Linebreak on 500 characters
 set lbr
 set tw=500
-   
+
 set si "Smart indent
 set wrap "Wrap lines
 
@@ -46,12 +46,12 @@ autocmd BufReadPost *
       \   exe "normal! g`\"" |
       \ endif
 
- 
+
 " grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
- 
+
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 "  The following changes the default filetype back to 'tex':

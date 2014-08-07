@@ -30,7 +30,7 @@ map <F2> :nohls<CR>
 "custom comma motion mapping
 nnoremap di, f,dT,
 nnoremap ci, f,cT,
-nnoremap da, f,ld2T, "delete argument 
+nnoremap da, f,ld2T, "delete argument
 nnoremap ca, f,ld2T,i "delete arg and insert
 
 " diff

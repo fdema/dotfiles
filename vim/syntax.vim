@@ -1,4 +1,4 @@
-" ============== Syntax Settings ============== 
+" ============== Syntax Settings ==============
 
 filetype plugin indent on
 
