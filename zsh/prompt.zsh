@@ -1,6 +1,5 @@
 autoload -U colors add-zsh-hook && colors
 
-
 prompt_setup() {
 
     RETVALS=$pipestatus
@@ -31,22 +30,69 @@ prompt_setup() {
 
     if [ -n "$SSH_CLIENT" ]; then
         host="%{$bg[grey]$fg[white]%}  %m %{$bg[$usercolor]$fg[grey]%}"
-    else
-        host=""
     fi
 
     userstring="$host%{$bg[$usercolor]$fg[white]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[grey]%}%{$reset_color%}"
 
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        if $(git status | grep "working directory clean" >/dev/null 2>&1); then
-            gitcolor="grey"
-            gitsymbol=""
+        gitbranch=`git symbolic-ref HEAD 2>/dev/null | sed "s/refs\/heads\///"`
+        gitchangedfiles=`git diff --name-status | sed "s/^\(.\)/\1/"`
+        gitstagedfiles=`git diff --staged --name-status | sed "s/^\(.\)/\1/"`
+
+        gitnumchanged=`echo -n $gitchangedfiles | grep -v "U" | wc -l`
+        gitnumconflicts=`echo -n $gitstagedfiles | grep "U" | wc -l`
+        gitnumstaged=`echo -n $gitstagedfiles | grep -v "U" | wc -l`
+        gitnumuntracked=`git ls-files --others --exclude-standard | wc -l`
+
+        if [ $gitnumchanged -gt 0 -o $gitnumconflicts -gt 0 -o $gitnumstaged -gt 0 -o $gitnumuntracked -gt 0 ]
+        then
+            clean="false"
         else
-            gitcolor="yellow"
-            gitsymbol="±"
+            clean="true"
         fi
 
-        git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[white]%B%} $gitsymbol $(git branch | grep "^*" | sed "s/^* //") %{%b$reset_color%}"
+        if [ -z "$gitbranch" ]; then
+            gitbranch=`git rev-parse --short HEAD`
+        else
+            gitremotename=`git config branch.$gitbranch.remote 2>/dev/null`
+            if [ -n "$gitremotename" ]; then
+                gitmergename=`git config branch.$gitbranch.merge 2>/dev/null`
+                if [ $gitremotename = "." ]; then
+                    gitremoteref=$gitmergename
+                else
+                    gitremoteref="refs/remotes/$gitremotename/$(echo $gitmergename | sed "s/refs\/heads\///")"
+                fi
+                gitrevlist=`git rev-list --left-right $gitremoteref...HEAD 2>/dev/null`
+                if [ $? -ne 0 ]; then
+                    gitrevlist=`git rev-list --left-right $gitmergename...HEAD 2>/dev/null`
+                fi
+                gitnumcommitsahead=`echo $gitrevlist | grep "^>" | wc -l`
+                gitnumcommitsbehind=`echo $gitrevlist | grep "^<" | wc -l`
+            fi
+        fi
+
+
+        if [ $clean = "true" ]; then
+            gitcolor="grey"
+            gitstring=""
+            [ -n "$gitnumcommitsahead" ] && [ $gitnumcommitsahead -gt 0 ] && gitstring="$gitstring${gitnumcommitsahead}↑"
+            [ -n "$gitnumcommitsbehind" ] && [ $gitnumcommitsbehind -gt 0 ] && gitstring="$gitstring${gitnumcommitsbehind}↓"
+        else
+            gitcolor="yellow"
+            gitstring=""
+            [ $gitnumchanged -gt 0 ] && gitstring="${gitnumchanged}±"
+            [ $gitnumstaged -gt 0 ] && gitstring="$gitstring${gitnumstaged}✔"
+            [ $gitnumconflicts -gt 0 ] && gitstring="$gitstring${gitnumconflicts}✘"
+            [ $gitnumuntracked -gt 0 ] && gitstring="$gitstring${gitnumuntracked}…"
+            [ -n "$gitnumcommitsahead" ] && [ $gitnumcommitsahead -gt 0 ] && gitstring="$gitstring${gitnumcommitsahead}↑"
+            [ -n "$gitnumcommitsbehind" ] && [ $gitnumcommitsbehind -gt 0 ] && gitstring="$gitstring${gitnumcommitsbehind}↓"
+        fi
+
+        if [ -z "$gitstring" ]; then
+            git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[white]%B%}  $gitbranch %{%b$reset_color%}"
+        else
+            git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[white]%B%}  $gitbranch $gitstring %{%b$reset_color%}"
+        fi
     fi
 
     for RETVAL in $(echo $RETVALS | sed "s/ /\n/g"); do
