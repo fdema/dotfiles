@@ -135,6 +135,10 @@ prompt_setup() {
         | sed "s/\// %{$fg[white]%}%{$fg[white]%} /g" \
         | sed "s/$/%{$bg[grey]%} %{$reset_color$fg[grey]%}%{$reset_color%}/"`
 
+    if [ $(pwd) = "/" ]; then
+        dir="%{$bg[grey]$fg[white]%B%} / %{%b$reset_color$fg[grey]%}%{$reset_color%}"
+    fi
+
     PROMPT="$userstring$dir "
     RPROMPT="$git$errorcode"
 
