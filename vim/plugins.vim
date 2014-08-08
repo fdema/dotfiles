@@ -17,7 +17,6 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'mattn/webapi-vim'
@@ -26,6 +25,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'jcf/vim-latex'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
+Plugin 'bling/vim-airline'
 
 " Colors
 Plugin 'tomasr/molokai'
@@ -48,14 +48,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 
 
-" ============ Powerline settings ============
-
-set laststatus=2
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-
 " ============ gist-vim settings =============
 
 let g:gist_api_url = 'https://github.ugent.be/api/v3/'
 
 let g:gist_open_browser_after_post = 1
+
+
+" ============ airline settings =============
+
+let g:airline_powerline_fonts = 1

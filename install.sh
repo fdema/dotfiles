@@ -170,10 +170,6 @@ then
     ln -s $DIR/vimrc ~/.vimrc
     ln -s $DIR/vim ~/.vim
 
-    mkdir -p ~/.config/
-
-    backup .config/powerline
-    ln -s $DIR/config/powerline ~/.config/powerline
     echo "Done!"
 
     echo -n "Installing vim plugins."

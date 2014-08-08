@@ -26,7 +26,7 @@ prompt_setup() {
         usercolor="red"
     else
         usercolor="green"
-    fi 
+    fi
 
     if [ -n "$SSH_CLIENT" ]; then
         host="%{$bg[grey]$fg[white]%}  %m %{$bg[$usercolor]$fg[grey]%}"
