@@ -42,7 +42,7 @@ prompt_setup() {
         gitnumchanged=`echo -n $gitchangedfiles | grep -v "U" | wc -l`
         gitnumconflicts=`echo -n $gitstagedfiles | grep "U" | wc -l`
         gitnumstaged=`echo -n $gitstagedfiles | grep -v "U" | wc -l`
-        gitnumuntracked=`git ls-files --others --exclude-standard | wc -l`
+        gitnumuntracked=`git exec git ls-files --others --exclude-standard | wc -l`
 
         if [ $gitnumchanged -gt 0 -o $gitnumconflicts -gt 0 -o $gitnumstaged -gt 0 -o $gitnumuntracked -gt 0 ]
         then
