@@ -16,6 +16,9 @@ alias hist='history | grep'         # requires an argument
 alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 alias pgg='ps -Af | grep'           # requires an argument
 alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
 # }}}
 
 # Privileged access
@@ -41,6 +44,7 @@ alias lm='la | more'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -I'                    # 'rm -i' prompts for every file
+alias rr='rm -rI'
 
 # safer alternative w/ timeout, not stored in history
 alias rm=' timeout 3 rm -Iv --one-file-system'
@@ -58,11 +62,14 @@ alias :q=' exit'
 alias :Q=' exit'
 alias :x=' exit'
 alias cd..='cd ..'
+alias cd...='cd ../../'
+alias cd....='cd ../../../'
+alias cd.....='cd ../../../../'
 # }}}
 
 # Vim accepts Ctrl+s as input
 alias vim="stty stop '' -ixoff ; vim"
 
-# 'Frozing' tty, so after any command terminal settings will be restored
+# 'Freezing' tty, so after any command terminal settings will be restored
 # Needed for CTRL+S in vim
 ttyctl -f
