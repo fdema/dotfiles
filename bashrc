@@ -56,13 +56,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -92,15 +85,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load aliases
-if [ -f ~/.bash/aliases.bash ]
-then
-    source ~/.bash/aliases.bash
-fi
+[ -f ~/.bash/aliases.bash ] && source ~/.bash/aliases.bash
+[ -f ~/.bash/prompt.bash ] && source ~/.bash/prompt.bash
 
 # Load local settings.
 source ~/.bashrc.local
-
-# Load Powerline
-. ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
-
