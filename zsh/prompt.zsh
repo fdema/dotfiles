@@ -128,7 +128,7 @@ prompt_setup() {
         errorcode=""
     fi
 
-    dir=`pwd | sed "s/^\///" | sed "s/home\/$user/~/" \
+    dir=`pwd | sed "s#$HOME#/~#" | sed "s#^/##" \
         | sed "s/\([^/]*\)$/%{%B%}\1%{%b%}/" \
         | sed "s/.*\(\/[^/]*\/[^/]*\/[^/]*\)/⋯\1/" \
         | sed "s/^/%{$bg[grey]$fg[white]%} /" \

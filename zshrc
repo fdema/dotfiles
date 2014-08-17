@@ -1,5 +1,5 @@
 # Find out distro
-DISTRO=$(cat /etc/*-release | grep "^ID=" | sed "s/^ID=//")
+DISTRO=$(cat /etc/*-release | grep "^ID=" | sed "s/^ID=//") 2>/dev/null
 
 source ~/.zsh/completion.zsh
 source ~/.zsh/functions.zsh
