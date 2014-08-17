@@ -146,7 +146,7 @@ prompt_setup() {
         | sed "s/\// %{$fg[$PROMPT_TEXT_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]%} /g" \
         | sed "s/$/%{$bg[$PROMPT_DIR_COLOR]%} %{$reset_color$fg[$PROMPT_DIR_COLOR]%}%{$reset_color%}/"`
 
-    if [ $(pwd) = "/" ]; then
+    if [ "$(pwd)" = "/" ]; then
         dir="%{$bg[$PROMPT_DIR_COLOR]$fg[$PROMPT_TEXT_COLOR]%B%} / %{%b$reset_color$fg[$PROMPT_DIR_COLOR]%}%{$reset_color%}"
     fi
 
