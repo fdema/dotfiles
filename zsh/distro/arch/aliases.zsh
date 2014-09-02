@@ -40,9 +40,6 @@ alias pacexpl="yaourt -D --asexp"
 # 'mark as [impl]icit' - mark one or more packages as non explicitly installed
 alias pacimpl="yaourt -D --asdep"
 
-# '[r]emove [o]rphans' - recursively remove ALL orphaned packages
-alias pacro="yaourt -Qtdq > /dev/null && yaourt -Rns \$(yaourt -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
-
 # update all *-git packages
 alias pacugit="yaourt --noconfirm -S \$(yaourt -Q | grep '\-git' | sed 's/.*\/\([^ ]* \).*/\1/' | tr -d '\n')"
 
