@@ -50,8 +50,6 @@ filetype plugin indent on    " required
 
 " ============ gist-vim settings =============
 
-let g:gist_api_url = 'https://github.ugent.be/api/v3/'
-
 let g:gist_open_browser_after_post = 1
 
 
