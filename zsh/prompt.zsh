@@ -1,5 +1,16 @@
 autoload -U colors add-zsh-hook && colors
 
+PROMPT_TEXT_COLOR="white"
+PROMPT_SSH_COLOR="grey"
+PROMPT_ROOTUSER_COLOR="red"
+PROMPT_NORMALUSER_COLOR="green"
+PROMPT_DIR_COLOR="grey"
+
+PROMPT_GITCLEAN_COLOR="grey"
+PROMPT_GITDIRTY_COLOR="yellow"
+PROMPT_COMMANDFAIL_COLOR="red"
+PROMPT_COMMANDSUCCES_COLOR="green"
+
 prompt_setup() {
 
     RETVALS=$pipestatus
@@ -23,16 +34,16 @@ prompt_setup() {
     user=`whoami`
 
     if [ "$user" = "root" ]; then
-        usercolor="red"
+        usercolor=$PROMPT_ROOTUSER_COLOR
     else
-        usercolor="green"
+        usercolor=$PROMPT_NORMALUSER_COLOR
     fi
 
     if [ -n "$SSH_CLIENT" ]; then
-        host="%{$bg[grey]$fg[white]%}  %m %{$bg[$usercolor]$fg[grey]%}"
+        host="%{$bg[$PROMPT_SSH_COLOR]$fg[$PROMPT_TEXT_COLOR]%}  %m %{$bg[$usercolor]$fg[$PROMPT_SSH_COLOR]%}"
     fi
 
-    userstring="$host%{$bg[$usercolor]$fg[white]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[grey]%}%{$reset_color%}"
+    userstring="$host%{$bg[$usercolor]$fg[$PROMPT_TEXT_COLOR]%B%} %n %{%b$reset_color$fg[$usercolor]$bg[$PROMPT_DIR_COLOR]%}%{$reset_color%}"
 
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         gitbranch=`git symbolic-ref HEAD 2>/dev/null | sed "s/refs\/heads\///"`
@@ -73,12 +84,12 @@ prompt_setup() {
 
 
         if [ $clean = "true" ]; then
-            gitcolor="grey"
+            gitcolor=$PROMPT_GITCLEAN_COLOR
             gitstring=""
             [ -n "$gitnumcommitsahead" ] && [ $gitnumcommitsahead -gt 0 ] && gitstring="$gitstring${gitnumcommitsahead}↑"
             [ -n "$gitnumcommitsbehind" ] && [ $gitnumcommitsbehind -gt 0 ] && gitstring="$gitstring${gitnumcommitsbehind}↓"
         else
-            gitcolor="yellow"
+            gitcolor=$PROMPT_GITDIRTY_COLOR
             gitstring=""
             [ $gitnumchanged -gt 0 ] && gitstring="${gitnumchanged}±"
             [ $gitnumstaged -gt 0 ] && gitstring="$gitstring${gitnumstaged}✔"
@@ -89,9 +100,9 @@ prompt_setup() {
         fi
 
         if [ -z "$gitstring" ]; then
-            git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[white]%B%}  $gitbranch %{%b$reset_color%}"
+            git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[$PROMPT_TEXT_COLOR]%B%}  $gitbranch %{%b$reset_color%}"
         else
-            git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[white]%B%}  $gitbranch $gitstring %{%b$reset_color%}"
+            git="%{$fg[$gitcolor]%}%{$bg[$gitcolor]$fg[$PROMPT_TEXT_COLOR]%B%}  $gitbranch $gitstring %{%b$reset_color%}"
         fi
     fi
 
@@ -100,26 +111,26 @@ prompt_setup() {
             printerrorcodes="true"
             if [ "$previous" = "none"  ]; then
                 if [ -n "$git" ]; then
-                    errorcode="%{$reset_color$bg[$gitcolor]$fg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
+                    errorcode="%{$reset_color$bg[$gitcolor]$fg[$PROMPT_COMMANDFAIL_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDFAIL_COLOR]%B%} $RETVAL %{%b$reset_color%}"
                 else
-                    errorcode="%{$reset_color$fg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
+                    errorcode="%{$reset_color$fg[$PROMPT_COMMANDFAIL_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDFAIL_COLOR]%B%} $RETVAL %{%b$reset_color%}"
                 fi
             elif [ "$previous" != "0" ]; then
-                errorcode="$errorcode%{$fg[white]$bg[red]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
+                errorcode="$errorcode%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDFAIL_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDFAIL_COLOR]%B%} $RETVAL %{%b$reset_color%}"
             else
-                errorcode="$errorcode%{$fg[red]$bg[green]%}%{$fg[white]$bg[red]%B%} $RETVAL %{%b$reset_color%}"
+                errorcode="$errorcode%{$fg[$PROMPT_COMMANDFAIL_COLOR]$bg[$PROMPT_COMMANDSUCCES_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDFAIL_COLOR]%B%} $RETVAL %{%b$reset_color%}"
             fi
         else
             if [ "$previous" = "none"  ]; then
                 if [ -n "$git" ]; then
-                    errorcode="%{$reset_color$bg[$gitcolor]$fg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
+                    errorcode="%{$reset_color$bg[$gitcolor]$fg[$PROMPT_COMMANDSUCCES_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDSUCCES_COLOR]%B%} $RETVAL %{%b$reset_color%}"
                 else
-                    errorcode="%{$reset_color$fg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
+                    errorcode="%{$reset_color$fg[$PROMPT_COMMANDSUCCES_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDSUCCES_COLOR]%B%} $RETVAL %{%b$reset_color%}"
                 fi
             elif [ "$previous" != "0" ]; then
-                errorcode="$errorcode%{$fg[green]$bg[red]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
+                errorcode="$errorcode%{$fg[$PROMPT_COMMANDSUCCES_COLOR]$bg[$PROMPT_COMMANDFAIL_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDSUCCES_COLOR]%B%} $RETVAL %{%b$reset_color%}"
             else
-                errorcode="$errorcode%{$fg[white]$bg[green]%}%{$fg[white]$bg[green]%B%} $RETVAL %{%b$reset_color%}"
+                errorcode="$errorcode%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDSUCCES_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]$bg[$PROMPT_COMMANDSUCCES_COLOR]%B%} $RETVAL %{%b$reset_color%}"
             fi
         fi
         previous=$RETVAL
@@ -131,12 +142,12 @@ prompt_setup() {
     dir=`pwd | sed "s#$HOME#/~#" | sed "s#^/##" \
         | sed "s/\([^/]*\)$/%{%B%}\1%{%b%}/" \
         | sed "s/.*\(\/[^/]*\/[^/]*\/[^/]*\)/⋯\1/" \
-        | sed "s/^/%{$bg[grey]$fg[white]%} /" \
-        | sed "s/\// %{$fg[white]%}%{$fg[white]%} /g" \
-        | sed "s/$/%{$bg[grey]%} %{$reset_color$fg[grey]%}%{$reset_color%}/"`
+        | sed "s/^/%{$bg[$PROMPT_DIR_COLOR]$fg[$PROMPT_TEXT_COLOR]%} /" \
+        | sed "s/\// %{$fg[$PROMPT_TEXT_COLOR]%}%{$fg[$PROMPT_TEXT_COLOR]%} /g" \
+        | sed "s/$/%{$bg[$PROMPT_DIR_COLOR]%} %{$reset_color$fg[$PROMPT_DIR_COLOR]%}%{$reset_color%}/"`
 
-    if [ $(pwd) = "/" ]; then
-        dir="%{$bg[grey]$fg[white]%B%} / %{%b$reset_color$fg[grey]%}%{$reset_color%}"
+    if [ "$(pwd)" = "/" ]; then
+        dir="%{$bg[$PROMPT_DIR_COLOR]$fg[$PROMPT_TEXT_COLOR]%B%} / %{%b$reset_color$fg[$PROMPT_DIR_COLOR]%}%{$reset_color%}"
     fi
 
     PROMPT="$userstring$dir "
