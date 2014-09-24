@@ -40,6 +40,9 @@ alias pacexpl="yaourt -D --asexp"
 # 'mark as [impl]icit' - mark one or more packages as non explicitly installed
 alias pacimpl="yaourt -D --asdep"
 
+# '[s]earch [i]nstalled packages' - requires an argument
+alias pacsi="yaourt -Q | grep"
+
 # update all *-git packages
 alias pacugit="yaourt --noconfirm -S \$(yaourt -Q | grep '\-git' | sed 's/.*\/\([^ ]* \).*/\1/' | tr -d '\n')"
 
