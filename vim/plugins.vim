@@ -26,6 +26,7 @@ Plugin 'jcf/vim-latex'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
 Plugin 'bling/vim-airline'
+Plugin 'richsoni/vim-ecliptic'
 
 " Colors
 Plugin 'tomasr/molokai'
