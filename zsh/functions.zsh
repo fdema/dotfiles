@@ -56,3 +56,17 @@ extract() {
     done
     return "$e"
 }
+
+extract_in_folder() {
+    local i folder
+
+    (($#)) || return
+
+    for i; do
+        folder=`echo $i | sed "s/\.[^.]*$//"`
+        mkdir $folder
+        mv $i $folder
+        (cd $folder && extract $i && mv $i ..)
+    done
+
+}
