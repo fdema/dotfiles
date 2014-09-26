@@ -18,7 +18,7 @@ extract() {
 
     for i; do
         c=''
-        e=1
+        e=0
 
         if [[ ! -r $i ]]; then
             echo "$0: file is unreadable: \`$i'" >&2
@@ -52,7 +52,7 @@ extract() {
         esac
 
         command "${c[@]}" "$i"
-        ((e = e || $?))
+        ((e = e && $?))
     done
     return "$e"
 }
