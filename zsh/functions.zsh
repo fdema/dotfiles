@@ -70,3 +70,14 @@ extract_in_folder() {
     done
 
 }
+
+accept-line() {
+    if [ "`echo $BUFFER | sed "s/^\(.\).*/\1/g"`" = "s" ]; then
+        if ! which $(echo $BUFFER | sed "s/^\([^ ]*\).*/\1/") >/dev/null 2>&1; then
+            BUFFER="sudo $(echo $BUFFER | sed "s/^.//")"
+        fi
+    fi
+    zle .$WIDGET
+}
+ 
+zle -N accept-line
