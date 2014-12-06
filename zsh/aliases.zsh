@@ -9,6 +9,12 @@ alias nano='nano -w'
 alias ping='ping -c 5'
 # }}}
 
+## Directory aliases
+
+hash -d dotfiles='/home/florian/repos/dotfiles'
+
+
+
 ## New commands ## {{{
 alias da='date "+%A, %B %d, %Y [%T]"'
 alias du1='du --max-depth=1'

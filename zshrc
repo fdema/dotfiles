@@ -1,3 +1,14 @@
+# TMUX
+if which tmux >/dev/null 2>&1; then
+    # if no session is started, start a new session
+    test -z ${TMUX} && tmux
+
+    # when quitting tmux, try to attach
+    while test -z ${TMUX}; do
+        tmux attach || break
+    done
+fi
+
 # Find out distro
 DISTRO=$(cat /etc/*-release | grep "^ID=" | sed "s/^ID=//") 2>/dev/null
 
@@ -24,3 +35,4 @@ if [ -f ~/.zshrc.local ]
 then
     source ~/.zshrc.local
 fi
+
