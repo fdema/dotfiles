@@ -1,12 +1,10 @@
 # TMUX
-if which tmux >/dev/null 2>&1; then
-    # if no session is started, start a new session
-    test -z ${TMUX} && tmux
-
-    # when quitting tmux, try to attach
-    while test -z ${TMUX}; do
-        tmux attach || break
-    done
+if [[ -z "$TMUX" ]]; then
+    if tmux -q has-session; then
+        exec tmux attach-session -d
+    else
+        exec tmux new-session -ndefault
+    fi
 fi
 
 # Find out distro

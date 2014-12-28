@@ -13,20 +13,22 @@ Plugin 'gmarik/Vundle.vim'
 " Original plugins on GitHub
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sensible' " sensible defaults
+Plugin 'tpope/vim-surround' " surround things with stuff
 Plugin 'tpope/vim-abolish'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
+Plugin 'Lokaltog/vim-easymotion' " advanced navigation
+Plugin 'scrooloose/nerdtree' " cool filebrowser
+Plugin 'scrooloose/syntastic' " syntaxchecker
+Plugin 'mattn/webapi-vim' "required for gist-vim
+Plugin 'mattn/gist-vim' " create gists in a breeze
 Plugin 'Raimondi/delimitMate'
 Plugin 'jcf/vim-latex'
-Plugin 'xolox/vim-notes'
-Plugin 'xolox/vim-misc'
-Plugin 'bling/vim-airline'
+Plugin 'xolox/vim-notes' " note-taking
+Plugin 'xolox/vim-misc' " required for vim-notes
+Plugin 'bling/vim-airline' " powerline but not bloated
 Plugin 'richsoni/vim-ecliptic'
+Plugin 'sudo.vim' " execute vim with sudo priviliges
+Plugin 'airblade/vim-gitgutter'
 
 " Colors
 Plugin 'tomasr/molokai'
