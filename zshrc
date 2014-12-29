@@ -1,12 +1,12 @@
-# TMUX
-if [[ -z "$TMUX" ]]; then
-    if tmux -q has-session; then
-        exec tmux attach-session -d
-    else
-        exec tmux new-session -ndefault
-    fi
-fi
-
+## TMUX
+#if [[ -z "$TMUX" ]]; then
+#    if tmux -q has-session; then
+#        exec tmux attach-session -d
+#    else
+#        exec tmux new-session -ndefault
+#    fi
+#fi
+#
 # Find out distro
 DISTRO=$(cat /etc/*-release | grep "^ID=" | sed "s/^ID=//") 2>/dev/null
 
