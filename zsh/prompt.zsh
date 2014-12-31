@@ -47,8 +47,8 @@ prompt_setup() {
 
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         gitbranch=`git symbolic-ref HEAD 2>/dev/null | sed "s/refs\/heads\///"`
-        gitchangedfiles=`git diff --name-status | sed "s/^\(.\)/\1/"`
-        gitstagedfiles=`git diff --staged --name-status | sed "s/^\(.\)/\1/"`
+        gitchangedfiles=`git diff --name-status | sed "s/^\(.\).*/\1/"`
+        gitstagedfiles=`git diff --staged --name-status | sed "s/^\(.\).*/\1/"`
 
         gitnumchanged=`echo -n $gitchangedfiles | grep -v "U" | wc -l`
         gitnumconflicts=`echo -n $gitstagedfiles | grep "U" | wc -l`
