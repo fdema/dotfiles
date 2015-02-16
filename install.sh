@@ -129,7 +129,7 @@ done
 if [ "$answer" == "y" ]
 then
     echo -n "Installing git config files... "
-    echo -e "[include]\n\tpath = $DIR/gitconfig" > ~/.gitconfig.tmp
+    echo -e "[include]\n\tpath = $DIR/gitconfig/.gitconfig" > ~/.gitconfig.tmp
     [ -f "~/.gitconfig" ] && cat ~/.gitconfig >> ~/.gitconfig.tmp
     mv ~/.gitconfig.tmp ~/.gitconfig
     echo "Done!"
