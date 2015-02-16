@@ -93,8 +93,8 @@ then
     echo -n "Installing zsh config files... "
     backup .zsh
     localrc .zshrc
-    ln -s $DIR/zshrc ~/.zshrc
-    ln -s $DIR/zsh ~/.zsh
+    ln -s $DIR/zsh/.zshrc ~/.zshrc
+    ln -s $DIR/zsh/.zsh ~/.zsh
     echo "Done!"
 else
     echo "Skipping zsh config..."
@@ -112,8 +112,8 @@ then
     echo -n "Installing bash config files... "
     backup .bash
     localrc .bashrc
-    ln -s $DIR/bashrc ~/.bashrc
-    ln -s $DIR/bash ~/.bash
+    ln -s $DIR/bash/.bashrc ~/.bashrc
+    ln -s $DIR/bash/.bash ~/.bash
     echo "Done!"
 else
     echo "Skipping bash config..."
@@ -148,7 +148,7 @@ if [ "$answer" == "y" ]
 then
     echo -n "Installing Xresources..."
     backup .Xresources
-    ln -s $DIR/Xresources ~/.Xresources
+    ln -s $DIR/Xresources/.Xresources ~/.Xresources
     xrdb Xresources
     echo "Done!"
 else
@@ -167,15 +167,15 @@ then
     echo -n "Installing vim config files... "
     backup .vim
     localrc .vimrc
-    ln -s $DIR/vimrc ~/.vimrc
-    ln -s $DIR/vim ~/.vim
+    ln -s $DIR/vim/.vimrc ~/.vimrc
+    ln -s $DIR/vim/.vim ~/.vim
 
     echo "Done!"
 
     echo -n "Installing vim plugins."
 
-    mkdir -p $DIR/vim/bundle >/dev/null 2>&1
-    git clone https://github.com/gmarik/Vundle.vim.git $DIR/vim/bundle/Vundle.vim >/dev/null 2>&1
+    mkdir -p $DIR/vim/.vim/bundle >/dev/null 2>&1
+    git clone https://github.com/gmarik/Vundle.vim.git $DIR/vim/.vim/bundle/Vundle.vim >/dev/null 2>&1
 
     echo -n "."
 
