@@ -10,3 +10,10 @@
 	autocorrect = 1
 [branch]
 	autosetuprebase = always
+[include]
+	path = /home/florian/repos/dotfiles/gitconfig
+[user]
+	email = florian@demaeyer.me
+	name = Florian De Maeyer
+[github]
+	user = fdema
