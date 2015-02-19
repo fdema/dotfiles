@@ -228,5 +228,22 @@ else
     echo "Skipping vim config..."
 fi
 
+echo "Dost thou desire to install Tmux config?"
+read -s -n 1 answer
+while [ "$answer" != "y" -a "$answer" != "n" ]
+do
+    echo "Please answer with y or n."
+    read -s -n 1 answer
+done
+if [ "$answer" == "y" ]
+then
+    echo -n "Installing Xresources..."
+    backup .tmux.config
+    ln -s $DIR/tmux/.tmux.conf ~/.tmux.conf
+    echo "Done!"
+else
+    echo "Skipping Tmux config..."
+fi
+
 echo "Installation Finished! Thine terminal emulator might require a restart for the changes to take effect."
 
