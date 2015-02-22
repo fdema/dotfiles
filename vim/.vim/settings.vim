@@ -5,8 +5,10 @@ if has('mouse')
 endif
 
 " relative numbers only in normal mode
+
+set number
 set relativenumber
-autocmd InsertEnter * :set number
+autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
 set cursorline " highlight current line
