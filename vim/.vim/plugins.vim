@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Original plugins on GitHub
 
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive' " git integration for vim
 Plugin 'tpope/vim-sensible' " sensible defaults
 Plugin 'tpope/vim-surround' " surround things with stuff
 Plugin 'tpope/vim-abolish'
@@ -29,6 +29,9 @@ Plugin 'bling/vim-airline' " powerline but not bloated
 Plugin 'richsoni/vim-ecliptic'
 Plugin 'sudo.vim' " execute vim with sudo priviliges
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-pandoc/vim-pandoc' " write documents in pandoc markdown
+Plugin 'vim-pandoc/vim-pandoc-syntax' " recommended for vim-pandoc
+
 
 " Colors
 Plugin 'tomasr/molokai'
