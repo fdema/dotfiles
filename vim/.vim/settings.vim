@@ -1,13 +1,18 @@
 " =============== General Settings  ===============
 
-
 if has('mouse')
     set mouse=a
 endif
 
-set number
-set hlsearch
+" relative numbers only in normal mode
+set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
+set cursorline " highlight current line
+
+" search settings
+set hlsearch
 set ignorecase
 set smartcase
 
@@ -34,15 +39,14 @@ set wrap "Wrap lines
 set listchars=tab:▸\ ,eol:¬
 
 
-
 " ================= Theme settings =================
 
 let g:solarized_termcolors=256
 :colorscheme solarized
 set background=dark
 
-" ================= Other settings =================
 
+" ================= Other settings =================
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -55,17 +59,5 @@ autocmd BufReadPost *
       \ endif
 
 
-" grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-"  The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-
 " stop vim from creating a .netrwhist file
 let g:netrw_dirhistmax=0
-
