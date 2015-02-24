@@ -15,23 +15,24 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive' " git integration for vim
 Plugin 'tpope/vim-sensible' " sensible defaults
 Plugin 'tpope/vim-surround' " surround things with stuff
-Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-abolish' " better substitution, add coercion
+Plugin 'tpope/vim-repeat' " make plugin actions repeatable with . 
+Plugin 'tpope/vim-eunuch' " add useful unix commands e.g. :SudoWrite
 Plugin 'Lokaltog/vim-easymotion' " advanced navigation
 Plugin 'scrooloose/nerdtree' " cool filebrowser
 Plugin 'scrooloose/syntastic' " syntaxchecker
+Plugin 'scrooloose/nerdcommenter' " use leader + ci to toggle comment out line
 Plugin 'mattn/webapi-vim' "required for gist-vim
 Plugin 'mattn/gist-vim' " create gists in a breeze
-Plugin 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate' " automatic closing of quotes, parentheses,...
 Plugin 'jcf/vim-latex'
 Plugin 'xolox/vim-notes' " note-taking
 Plugin 'xolox/vim-misc' " required for vim-notes
 Plugin 'bling/vim-airline' " powerline but not bloated
-Plugin 'richsoni/vim-ecliptic'
-Plugin 'sudo.vim' " execute vim with sudo priviliges
-Plugin 'airblade/vim-gitgutter'
+Plugin 'richsoni/vim-ecliptic' " copy to system clipboard (cy)
+Plugin 'airblade/vim-gitgutter' " show git diff in column next to linenumbers
 Plugin 'vim-pandoc/vim-pandoc' " write documents in pandoc markdown
 Plugin 'vim-pandoc/vim-pandoc-syntax' " recommended for vim-pandoc
-
 
 " Colors
 Plugin 'tomasr/molokai'
