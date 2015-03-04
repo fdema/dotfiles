@@ -30,7 +30,6 @@ alias .....='cd ../../../../'
 # Privileged access
 if [ $UID -ne 0 ]; then
     alias sudo='sudo '
-    alias scat='sudo cat'
     alias svim='sudoedit'
     alias root='sudo -s'
 fi
@@ -73,9 +72,9 @@ alias cd....='cd ../../../'
 alias cd.....='cd ../../../../'
 # }}}
 
-# Vim accepts Ctrl+s as input
-alias vim="stty stop '' -ixoff ; vim"
+# Vim accepts Ctrl+s as input. Keeps sudo vim from working!
+# alias vim="stty stop '' -ixoff ; vim"
 
 # 'Freezing' tty, so after any command terminal settings will be restored
-# Needed for CTRL+S in vim
-ttyctl -f
+# Needed for CTRL+s in vim
+# ttyctl -f

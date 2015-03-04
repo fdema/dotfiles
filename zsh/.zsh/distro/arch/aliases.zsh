@@ -46,4 +46,6 @@ alias pacsi="yaourt -Q | grep"
 # update all *-git packages
 alias pacugit="yaourt --noconfirm -S \$(yaourt -Q | grep '\-git' | sed 's/.*\/\([^ ]* \).*/\1/' | tr -d '\n')"
 
+alias reflect="/usr/bin/reflector --latest 30 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
+
 # }}}
