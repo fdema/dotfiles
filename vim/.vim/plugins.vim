@@ -33,6 +33,8 @@ Plugin 'richsoni/vim-ecliptic' " copy to system clipboard (cy)
 Plugin 'airblade/vim-gitgutter' " show git diff in column next to linenumbers
 Plugin 'vim-pandoc/vim-pandoc' " write documents in pandoc markdown
 Plugin 'vim-pandoc/vim-pandoc-syntax' " recommended for vim-pandoc
+Plugin 'vimgdb'
+Plugin 'Valloric/YouCompleteMe'
 
 " Colors
 Plugin 'tomasr/molokai'
